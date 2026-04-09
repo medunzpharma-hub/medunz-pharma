@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Services from "@/components/Services";
+import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -19,9 +21,12 @@ export default function Home() {
       </div>
 
       {/* HERO */}
-      <section className="relative z-10 flex flex-col md:flex-row items-center justify-between px-8 py-20 max-w-7xl mx-auto">
+      <section
+        id="inicio"
+        className="relative z-10 flex flex-col md:flex-row items-center justify-between px-8 py-20 max-w-7xl mx-auto scroll-mt-24"
+      >
 
-        {/* ESPACIO IZQUIERDO (para balance visual) */}
+        {/* ESPACIO IZQUIERDO */}
         <div className="hidden md:block w-1/2"></div>
 
         {/* CONTENIDO */}
@@ -32,9 +37,8 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex justify-center md:justify-start mb-6"
           >
-            <div className="bg-white p-3 rounded-2xl shadow-xl">
+            <div className="bg-white p-1 rounded-xl shadow-md">
               <Image
                 src="/logo.png"
                 alt="Medunz Pharma"
@@ -104,17 +108,23 @@ export default function Home() {
 
         </div>
       </section>
-	<Services />
-      {/* FOOTER SIMPLE */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="relative z-10 text-center pb-10 text-sm opacity-90"
-      >
-        Venta al por mayor y menor | Cobertura regional | Entrega rápida
-      </motion.div>
-	<WhatsAppButton />
+
+      {/* SERVICIOS */}
+      <div id="servicios" className="scroll-mt-24">
+        <Services />
+      </div>
+
+      {/* CONTACTO */}
+      <div id="contacto" className="scroll-mt-24">
+        <Contact />
+      </div>
+
+      {/* WHATSAPP */}
+      <WhatsAppButton />
+
+      {/* FOOTER */}
+      <Footer />
+
     </main>
   );
 }
