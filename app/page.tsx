@@ -2,36 +2,44 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import Services from "@/components/Services";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-r from-blue-900 via-blue-700 to-green-500 text-white">
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-r from-blue-900 via-blue-700 to-green-500 text-white pt-20">
 
-      {/* FONDO MEDUSA */}
+      {/* NAVBAR */}
+      <Navbar />
+
+      {/* FONDO DECORATIVO */}
       <div className="absolute left-0 top-0 h-full w-1/2 opacity-10 flex items-center justify-center">
         <Image src="/logo.png" alt="bg" width={600} height={600} />
       </div>
 
-      {/* CONTENIDO */}
+      {/* HERO */}
       <section className="relative z-10 flex flex-col md:flex-row items-center justify-between px-8 py-20 max-w-7xl mx-auto">
 
+        {/* ESPACIO IZQUIERDO (para balance visual) */}
         <div className="hidden md:block w-1/2"></div>
 
+        {/* CONTENIDO */}
         <div className="w-full md:w-1/2 text-center md:text-left">
 
-          {/* LOGO MEJORADO */}
+          {/* LOGO */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="flex justify-center md:justify-start mb-6"
           >
-            <div className="bg-white/20 backdrop-blur-lg p-4 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            <div className="bg-white p-3 rounded-2xl shadow-xl">
               <Image
                 src="/logo.png"
                 alt="Medunz Pharma"
-                width={80}
-                height={80}
+                width={90}
+                height={90}
               />
             </div>
           </motion.div>
@@ -58,7 +66,6 @@ export default function Home() {
 
           {/* BENEFICIOS */}
           <div className="space-y-4 mb-8">
-
             {[
               "Calidad garantizada",
               "Entrega rápida",
@@ -97,8 +104,8 @@ export default function Home() {
 
         </div>
       </section>
-
-      {/* FOOTER */}
+	<Services />
+      {/* FOOTER SIMPLE */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -107,7 +114,7 @@ export default function Home() {
       >
         Venta al por mayor y menor | Cobertura regional | Entrega rápida
       </motion.div>
-
+	<WhatsAppButton />
     </main>
   );
 }
