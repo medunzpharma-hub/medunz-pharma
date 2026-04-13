@@ -27,16 +27,16 @@ export default function Contact() {
   };
 
   return (
-    <section className="bg-gray-50 py-20 px-6">
+    <section className="bg-white text-gray-800 py-20 px-6">
 
       <div className="max-w-4xl mx-auto text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Contáctanos
-        </h2>
-        <p className="text-gray-500">
-          Solicita información o cotiza tus productos fácilmente
-        </p>
-      </div>
+	  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+	    Contáctanos
+	  </h2>
+	  <p className="text-gray-600">
+	    Solicita información o cotiza tus productos fácilmente
+	  </p>
+	</div>
 
       <motion.form
         onSubmit={handleSubmit}

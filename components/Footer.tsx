@@ -72,7 +72,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/20 mt-10 pt-6 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} Medunz Pharma
+        © {new Date().getFullYear()} GHOST Web & Software Designer
       </div>
 
     </footer>
