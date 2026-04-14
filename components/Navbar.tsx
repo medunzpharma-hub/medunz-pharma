@@ -36,7 +36,7 @@ export default function Navbar() {
   }, []);
 
   const linkClass = (section: string) =>
-    `block py-2 ${
+    `transition ${
       active === section
         ? "text-green-400 font-semibold"
         : "text-white hover:text-green-400"
@@ -66,17 +66,36 @@ export default function Navbar() {
         </div>
 
         {/* DESKTOP MENU */}
-        <div className="hidden md:flex items-center gap-8 text-sm">
-          <a href="#inicio" className={linkClass("inicio")}>Inicio</a>
-          <a href="#servicios" className={linkClass("servicios")}>Servicios</a>
-          <a href="#contacto" className={linkClass("contacto")}>Contacto</a>
+        <div className="hidden md:flex items-center gap-6 text-sm">
 
+          <a href="#inicio" className={linkClass("inicio")}>
+            Inicio
+          </a>
+
+          <a href="#servicios" className={linkClass("servicios")}>
+            Servicios
+          </a>
+
+          <a href="#contacto" className={linkClass("contacto")}>
+            Contacto
+          </a>
+
+          {/* CTA PEDIDOS */}
           <a
             href="#contacto"
-            className="bg-green-500 px-5 py-2 rounded-lg font-semibold hover:bg-green-400"
+            className="bg-green-500 px-5 py-2 rounded-lg font-semibold hover:bg-green-400 transition"
           >
             Pedidos
           </a>
+
+          {/* CLIENTES */}
+          <a
+            href="/login"
+            className="border border-white/30 px-5 py-2 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition"
+          >
+            Clientes
+          </a>
+
         </div>
 
         {/* MOBILE BUTTON */}
@@ -90,11 +109,33 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden bg-blue-900/95 backdrop-blur-lg px-6 py-4 space-y-2">
-          <a href="#inicio" onClick={() => setOpen(false)} className={linkClass("inicio")}>Inicio</a>
-          <a href="#servicios" onClick={() => setOpen(false)} className={linkClass("servicios")}>Servicios</a>
-          <a href="#contacto" onClick={() => setOpen(false)} className={linkClass("contacto")}>Contacto</a>
+        <div className="md:hidden bg-blue-900/95 backdrop-blur-lg px-6 py-4 space-y-3">
 
+          <a
+            href="#inicio"
+            onClick={() => setOpen(false)}
+            className={linkClass("inicio")}
+          >
+            Inicio
+          </a>
+
+          <a
+            href="#servicios"
+            onClick={() => setOpen(false)}
+            className={linkClass("servicios")}
+          >
+            Servicios
+          </a>
+
+          <a
+            href="#contacto"
+            onClick={() => setOpen(false)}
+            className={linkClass("contacto")}
+          >
+            Contacto
+          </a>
+
+          {/* PEDIDOS */}
           <a
             href="#contacto"
             onClick={() => setOpen(false)}
@@ -102,6 +143,16 @@ export default function Navbar() {
           >
             Pedidos
           </a>
+
+          {/* CLIENTES */}
+          <a
+            href="/login"
+            onClick={() => setOpen(false)}
+            className="block border border-white/30 text-center py-2 rounded-lg font-semibold"
+          >
+            Clientes
+          </a>
+
         </div>
       )}
     </motion.nav>
