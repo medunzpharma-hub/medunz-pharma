@@ -1,36 +1,60 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 export default function Login() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
 
-  const handleLogin = () => {
-    if (email) {
-      localStorage.setItem("user", email);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
       router.push("/dashboard");
+    } catch (error: any) {
+      setError(error.message);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 to-green-500 px-6">
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 via-blue-700 to-green-500">
 
-      <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
 
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          Acceso Clientes
+        {/* TÍTULO */}
+        <h2 className="text-2xl font-bold text-center text-blue-900 mb-6">
+          Iniciar sesión
         </h2>
 
+        {/* INPUT EMAIL */}
         <input
           type="email"
           placeholder="Correo electrónico"
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 mb-4 text-gray-800"
-          value={email}
+          className="w-full mb-4 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
           onChange={(e) => setEmail(e.target.value)}
         />
 
+        {/* INPUT PASSWORD */}
+        <input
+          type="password"
+          placeholder="Contraseña"
+          className="w-full mb-4 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        {/* ERROR */}
+        {error && (
+          <p className="text-red-500 text-sm mb-4 text-center">
+            {error}
+          </p>
+        )}
+
+        {/* BOTÓN */}
         <button
           onClick={handleLogin}
           className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-400 transition"
@@ -39,6 +63,6 @@ export default function Login() {
         </button>
 
       </div>
-    </div>
+    </main>
   );
 }
